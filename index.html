@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Assento Usado — Curadoria de Design</title><style>@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #0d0e11;
+  --surface: #14161c;
+  --surface-hover: #1c1e26;
+  --border: #262933;
+  --text-main: #f3f3f5;
+  --text-muted: #8b8e99;
+  --gold: #d4af37;
+  --gold-glow: rgba(212, 175, 55, 0.15);
+  
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Header Editorial */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem clamp(1.5rem, 6vw, 4rem);
+  border-bottom: 1px solid var(--border);
+  background: rgba(13, 14, 17, 0.85);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-main);
+  transition: opacity 0.3s;
+}
+
+.logo:hover {
+  opacity: 0.7;
+}
+
+.top span {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Container Principal */
+main {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 6vw, 4rem) 6rem;
+}
+
+/* Hero Section */
+.hero {
+  padding: 6rem 0 4rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  font-weight: 300;
+  max-width: 50ch;
+  margin: 0 auto;
+}
+
+/* Grid da Galeria */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 3rem 2rem;
+  margin-top: 2rem;
+}
+
+.item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.item:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 40px var(--gold-glow);
+}
+
+.pics {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.pics img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: brightness(0.9);
+}
+
+.item:hover .pics img {
+  transform: scale(1.06);
+  filter: brightness(1);
+}
+
+.info {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.info h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.estado {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.linha {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--border);
+  padding-top: 1.2rem;
+}
+
+.linha strong {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.linha span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Página de Detalhes (Single Item) */
+.voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 3rem 0 2rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.voltar:hover {
+  color: var(--gold);
+}
+
+.detalhe {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .detalhe {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.galeria > img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.mini {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.mini button {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 90px;
+  height: 90px;
+  overflow: hidden;
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+.mini button:hover,
+.mini button.on {
+  opacity: 1;
+  border-color: var(--gold);
+}
+
+.mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.texto h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+}
+
+.preco {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.texto .estado {
+  margin-bottom: 2rem;
+}
+
+.texto p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.vend {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.vend strong {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  background: var(--text-main);
+  color: var(--bg);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 1.2rem 2rem;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: var(--gold);
+  color: #000;
+  box-shadow: 0 10px 25px var(--gold-glow);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 6vw, 4rem);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}.pics img{min-width:0;min-height:0}.texto .preco{color:var(--gold);font-size:2.5rem}.texto .estado{color:var(--gold);font-size:.75rem}a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}@media(max-width:600px){.top{padding:1rem}.top span{font-size:.6rem;text-align:right}.hero{padding:3rem 0 2rem}.grid{gap:1.5rem}.info{padding:1.25rem}main{padding-bottom:3rem}}
+</style></head><body><header class="top"><a href="#" class="logo">Assento</a><span>Curadoria &amp; Archival Design</span></header><main id="app"></main><footer>© Assento — Peças Únicas e Design Retrô.</footer>
+<script>
+const cadeiras=[{"slug":"plastica-preta-perfurada","nome":"Cadeira preta de polipropileno","preco":110,"estado":"Usada, bom estado","descricao":"Cadeira empilhável com assento e encosto em plástico preto, encosto perfurado e estrutura de aço tipo trenó. Boa para auditório, reunião ou mesa de desenho.","fotos":["https://raw.githubusercontent.com/rogertarefasifsp-ops/cadeiras/main/static/img/plastica1.jpg","https://raw.githubusercontent.com/rogertarefasifsp-ops/cadeiras/main/static/img/plastica2.jpg"],"vendedor":"Iago Braga","whatsapp":"5511959745339"},{"slug":"escolar-cinza-azulada","nome":"Cadeira escolar cinza-azulada","preco":80,"estado":"Usada, bom estado","descricao":"Cadeira com assento e encosto em plástico cinza-azulado e estrutura de tubo cinza-claro, com ponteiras nos pés. Leve, resistente e fácil de limpar.","fotos":["https://raw.githubusercontent.com/rogertarefasifsp-ops/cadeiras/main/static/img/escolar1.jpg","https://raw.githubusercontent.com/rogertarefasifsp-ops/cadeiras/main/static/img/escolar2.jpg"],"vendedor":"Nicollas Augusto","whatsapp":"5511967329940"},{"slug":"giratoria-preta-baixa","nome":"Cadeira giratória preta com base cromada","preco":140,"estado":"Usada, bom estado","descricao":"Cadeira de escritório sem braços, com regulagem de altura, rodízios e base cromada de cinco pontas. Estofado em courino preto.","fotos":["https://raw.githubusercontent.com/rogertarefasifsp-ops/cadeiras/main/static/img/swivel1.jpg","https://raw.githubusercontent.com/rogertarefasifsp-ops/cadeiras/main/static/img/swivel2.jpg"],"vendedor":"Nicolas Moreira","whatsapp":"5511915201148"},{"slug":"estofada-preta-listrada","nome":"Cadeira estofada preta com pés cinza","preco":100,"estado":"Usada, bom estado","descricao":"Cadeira fixa com assento e encosto estofados em courino preto com costuras verticais e estrutura de aço. Boa para recepção, escritório ou estudo.","fotos":["https://raw.githubusercontent.com/rogertarefasifsp-ops/cadeiras/main/static/img/estofada1.jpg","https://raw.githubusercontent.com/rogertarefasifsp-ops/cadeiras/main/static/img/estofada2.jpg"],"vendedor":"Roger Clemente","whatsapp":"5511963978331"}];
+const app=document.getElementById('app');
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e;}
+function photo(src,alt){const e=el('img');e.src=src;e.alt=alt;return e;}
+function link(cls,txt,href){const e=el('a',cls,txt);e.href=href;return e;}
+function catalogo(){document.title='Assento Usado — Curadoria de Design';const hero=el('section','hero');hero.innerHTML='<span class="hero-tag">Coleção Selecionada</span><h1>Design clássico. <em>Segunda vida.</em> Contato direto.</h1><p>Cadeiras de acervo com história, direto dos colecionadores e proprietários.</p>';const grid=el('section','grid');for(const c of cadeiras){const card=link('item',undefined,'#cadeira/'+c.slug),pics=el('div','pics'),info=el('div','info'),line=el('p','linha');for(const f of c.fotos)pics.append(photo(f,c.nome));line.append(el('strong','',brl(c.preco)),el('span','',c.vendedor));info.append(el('h2','',c.nome),el('p','estado',c.estado),line);card.append(pics,info);grid.append(card)}app.append(hero,grid)}
+function detalhe(c){document.title=c.nome+' | Assento Usado';const sec=el('section','detalhe'),gal=el('div','galeria'),main=photo(c.fotos[0],c.nome),mini=el('div','mini'),txt=el('div','texto');c.fotos.forEach((f,i)=>{const b=el('button',i===0?'on':'');b.type='button';b.setAttribute('aria-label','Ver foto '+(i+1));b.setAttribute('aria-pressed',String(i===0));b.append(photo(f,''));b.onclick=()=>{main.src=f;for(const x of mini.children){x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',String(x===b))}};mini.append(b)});gal.append(main,mini);const seller=el('p','vend','Vendedor: ');seller.append(el('strong','',c.vendedor));const msg='Olá '+c.vendedor+', tenho interesse na '+c.nome+' ('+brl(c.preco)+').';const wa=link('btn','Chamar '+c.vendedor.split(' ')[0]+' no WhatsApp','https://wa.me/'+c.whatsapp+'?text='+encodeURIComponent(msg));wa.target='_blank';wa.rel='noopener noreferrer';txt.append(el('h1','',c.nome),el('p','preco',brl(c.preco)),el('p','estado',c.estado),el('p','',c.descricao),seller,wa);sec.append(gal,txt);app.append(link('voltar','← Voltar às cadeiras','#'),sec)}
+function render(){app.replaceChildren();const hash=location.hash;const c=cadeiras.find(x=>hash==='#cadeira/'+x.slug);if(c)detalhe(c);else if(!hash||hash==='#')catalogo();else{document.title='Página não encontrada | Assento';app.append(link('voltar','← Voltar às cadeiras','#'),el('h1','','Cadeira não encontrada'))}window.scrollTo(0,0)}
+window.addEventListener('hashchange',render);render();
+</script></body></html>
